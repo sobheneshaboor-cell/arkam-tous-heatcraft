@@ -4,7 +4,7 @@ import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (s: Record<string, unknown>): { type?: string } =>
-    typeof s.type === "string" ? { type: s.type } : {},
+    typeof s["type"] === "string" ? { type: s["type"] } : {},
   head: () => seo("تماس با ما | درخواست مشاوره مبدل حرارتی - آرکام توس", "تماس با شرکت مبدل حرارتی آرکام توس؛ تلفن ۰۵۱۳۲۴۴۵۶۷۱، مشهد، شهرک صنعتی، بلوار اندیشه، پلاک ۶.", "/contact"),
   component: ContactPage,
 });
@@ -14,7 +14,7 @@ function ContactPage() {
   return (
     <>
       <PageHeroWrap kind="contact" />
-      <ContactSection key={type} defaultType={type} />
+      <ContactSection key={type} defaultType={type ?? ""} />
       <Location /><Faq />
     </>
   );
