@@ -1,24 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { About, ContactSection, Faq, Gallery, Hero, Location, Process, Products, Services, WhyUs } from "@/components/site/Sections";
+import { seo } from "@/lib/seo";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => seo("آرکام توس | طراحی، تولید و تعمیر مبدل حرارتی در مشهد", "شرکت مبدل حرارتی آرکام توس؛ طراحی، تولید، نصب، تعمیر و تأمین قطعات مبدل‌های حرارتی صنعتی در مشهد.", "/"),
+  component: () => (
+    <>
+      <Hero /><About /><Services /><Products /><WhyUs /><Process /><Gallery /><Faq /><ContactSection /><Location />
+    </>
+  ),
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
